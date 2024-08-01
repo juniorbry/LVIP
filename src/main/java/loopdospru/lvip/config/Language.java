@@ -102,6 +102,11 @@ public class Language {
     }
 
     private static Material getMaterial(String materialName) {
+        if (materialName == null || materialName.isEmpty()) {
+            Bukkit.getLogger().warning("Nome do material é nulo ou vazio.");
+            return Material.AIR; // Retorna um material padrão caso o nome esteja vazio
+        }
+
         try {
             return Material.valueOf(materialName.toUpperCase());
         } catch (IllegalArgumentException e) {
