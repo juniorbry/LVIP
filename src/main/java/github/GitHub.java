@@ -17,7 +17,7 @@ public class GitHub {
 
     private static final String REPO_OWNER = "juniorbry";
     private static final String REPO_NAME = "LVIP";
-    private static final String LATEST_VERSION_URL = "https://raw.githubusercontent.com/" + REPO_OWNER + "/" + REPO_NAME + "/main/latest-version.txt";
+    private static final String LATEST_VERSION_URL = "https://raw.githubusercontent.com/juniorbry/LVIP/main/latest-version.txt"; // Verifique o caminho real
     private static final String ZIP_URL = "https://github.com/" + REPO_OWNER + "/" + REPO_NAME + "/archive/refs/tags/vBuild1.0.0.zip";
     private static final String JAR_NAME = "lvip.jar"; // Nome do JAR que você espera no ZIP
 

@@ -67,10 +67,10 @@ public class ItemBuilder {
     }
 
     public ItemBuilder setSkullOwner(String owner) {
-        if (is.getType() == Material.PLAYER_HEAD) {
+        if (is.getType() == Material.SKULL_ITEM) {
             SkullMeta meta = (SkullMeta) is.getItemMeta();
             if (meta != null) {
-                meta.setOwningPlayer(Bukkit.getOfflinePlayer(owner));
+                meta.setOwner(owner);
                 is.setItemMeta(meta);
             }
         }

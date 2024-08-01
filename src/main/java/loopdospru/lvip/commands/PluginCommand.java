@@ -16,8 +16,7 @@ public class PluginCommand implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (commandSender instanceof Player) {
             Player player = (Player) commandSender;
-            if (player.hasPermission("lvip.admin")) {
-                player.sendMessage();
+            if (!player.hasPermission("lvip.admin")) {
                 return true;
             }
 

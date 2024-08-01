@@ -27,7 +27,8 @@ public class ProfileManager {
             statement.setString(3, json); // Para o caso de atualização
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            // Adicione logs mais informativos
+            System.err.println("Erro ao salvar perfil: " + e.getMessage());
         }
     }
 
@@ -40,10 +41,15 @@ public class ProfileManager {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 String json = resultSet.getString("json_data");
+                resultSet.close(); // Feche o ResultSet quando terminar
                 return ProfileFactory.createProfile(json, isUuid);
+            } else {
+                // Adicione um log para identificar quando o perfil não é encontrado
+                System.out.println("Perfil não encontrado para o identificador: " + identifier);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            // Adicione logs mais informativos
+            System.err.println("Erro ao carregar perfil: " + e.getMessage());
         }
         return null;
     }

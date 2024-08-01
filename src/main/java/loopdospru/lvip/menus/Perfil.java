@@ -12,6 +12,7 @@ import loopdospru.lvip.corja.profile.Profile;
 import loopdospru.lvip.manager.ProfileManager;
 import loopdospru.lvip.utils.ItemBuilder;
 import loopdospru.lvip.utils.Tempo;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -25,7 +26,7 @@ public class Perfil extends SimpleInventory {
     public Perfil() {
         super("lvip.profile", Language.profileTitle, Language.profileSize);
         configuration(configuration -> {
-            configuration.secondUpdate(1); // Definir o tempo de atualização do inventário (não configure isso caso não queira que ele atualize automaticamente)
+            configuration.secondUpdate(1); // Definir o tempo de atualização do inventário
         });
     }
 
@@ -38,20 +39,26 @@ public class Perfil extends SimpleInventory {
                 .setLore(translateLore(menuItem.getLore(), viewerPlayer))
                 .toItemStack());
         editor.setItem(menuItem.getSlot(), perfil);
-
     }
 
     private List<String> translateLore(List<String> lore, Player player) {
         List<String> nova = new ArrayList<>();
         String identificador = (General.isUuid() ? String.valueOf(player.getUniqueId()) : player.getName());
         Profile profile = ProfileManager.loadProfile(identificador, General.isUuid());
+
+        if (profile == null) {
+            // Logar um erro ou tratar a ausência do perfil de forma adequada
+            Bukkit.getLogger().warning("Perfil não encontrado para o identificador: " + identificador);
+            // Retorne uma lista de lore padrão ou uma mensagem de erro
+            return nova;
+        }
+
         String timezone = General.getTimeZone();
-        lore.forEach(lines -> {
-            assert profile != null;
-            nova.add(ChatColor.translateAlternateColorCodes('&', lines
-                    .replace("@tempo", Tempo.restam(profile.getAtual().getData(), profile.getAtual().getTempo(), timezone)
-                    .replace("@vip", profile.getAtual().getPrefixo()))));
-        });
+        for (String line : lore) {
+            nova.add(ChatColor.translateAlternateColorCodes('&', line
+                    .replace("@tempo", Tempo.restam(profile.getAtual().getData(), profile.getAtual().getTempo(), timezone))
+                    .replace("@vip", profile.getAtual().getPrefixo())));
+        }
         return nova;
     }
 }
