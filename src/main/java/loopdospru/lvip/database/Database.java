@@ -2,7 +2,8 @@ package loopdospru.lvip.database;
 
 import com.zaxxer.hikari.HikariDataSource;
 import loopdospru.lvip.config.General;
-import loopdospru.lvip.database.connections.Connection;
+import loopdospru.lvip.database.connections.ConnectionDatabase;
+import loopdospru.lvip.database.connections.ConnectionDatabase;
 import loopdospru.lvip.database.enums.DatabaseType;
 
 public class Database {
@@ -40,13 +41,11 @@ public class Database {
     }
 
     public void connect() {
-        new Connection().connect(HOST,
-                String.valueOf(port),
-                username,
-                password,
-                database,
-                type);
+        ConnectionDatabase connection = new ConnectionDatabase();
+        connection.connect(HOST, String.valueOf(port), username, password, database, type);
+        hikari = connection.getHikari(); // Atribui a variável hikari
     }
+
     public boolean isConnected() {
         return hikari != null && !hikari.isClosed();
     }
@@ -54,6 +53,7 @@ public class Database {
     public HikariDataSource getHikari() {
         return hikari;
     }
+
     public void disconnect() {
         if (isConnected()) {
             hikari.close();

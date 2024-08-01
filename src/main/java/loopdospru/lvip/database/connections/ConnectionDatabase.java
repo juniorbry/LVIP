@@ -2,16 +2,14 @@ package loopdospru.lvip.database.connections;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import loopdospru.lvip.database.Database;
-import loopdospru.lvip.utils.Messages;
-
 import java.io.File;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Connection {
+public class ConnectionDatabase {
 
-    HikariConfig hikari = Database.hikari;
+    private HikariDataSource hikari;
 
     public void connect(String HOST, String port, String username, String password, String database, String type) {
         HikariConfig config = new HikariConfig();
@@ -39,8 +37,12 @@ public class Connection {
         }
 
         hikari = new HikariDataSource(config);
-        System.out.println(Messages.getMessage("database_connected"));
+        System.out.println("Database connected");
         createTablesIfDoesntExist();
+    }
+
+    public HikariDataSource getHikari() {
+        return hikari;
     }
 
     private void createTablesIfDoesntExist() {
@@ -48,13 +50,13 @@ public class Connection {
                 "player_name TEXT PRIMARY KEY," +
                 "json_data TEXT NOT NULL" +
                 ");";
-        try (java.sql.Connection connection = hikari.getDataSource().getConnection();
+        try (Connection connection = hikari.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(createClientsTable);
-            System.out.println(Messages.getMessage("tables_created"));
+            System.out.println("Tables created");
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println(Messages.getMessage("table_creation_failed"));
+            System.out.println("Table creation failed");
         }
     }
 }

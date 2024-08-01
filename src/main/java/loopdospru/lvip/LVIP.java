@@ -34,7 +34,7 @@ public final class LVIP extends JavaPlugin {
     @Override
     public void onEnable() {
         getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[LVIP] Plugin is starting...");
-
+        General.initialize(this);
         instance = this;
         // Initialize database
         initializeDatabase();
@@ -75,7 +75,6 @@ public final class LVIP extends JavaPlugin {
 
         // Connect to the database
         new Database();
-        General.initialize(this);
     }
 
     private void checkForUpdates() {
