@@ -1,0 +1,24 @@
+
+# ★LVIP★ by LoopDosPru
+
+# PT-BR: Obrigado por utilizar o LVIP :) Não se esqueça de verificar se está a usar nossa última versão
+# ENGLISH: Thank you so much to use LVIP :) Don't forget about to verify if you're using the last version of this plugin.
+
+#Database (MYSQL/SQLITE) via HikariCP
+Database:
+  Type: SQLITE
+  Name: 'database'
+  IP: 'localhost:2559'
+  User: 'root'
+  Password: ''
+
+General:
+  Language: 'pt-br.yml'
+  Title: true
+  Firework: true
+  utils-uuid: true
+
+options:
+  always-update: true
+  warn: true
+  time-zone: GMT-3

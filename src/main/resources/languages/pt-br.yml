@@ -1,0 +1,152 @@
+# Linguagem padrão, para criar mais, ou uma personalizada,
+#copie e cole este arquivo, edite, e defina no config.yml
+
+Messages:
+  Error:
+    key:
+      - "&aChave aprovada! Registrando em nossa database sua adquirição."
+      - "&cNão existe esta chave! Por favor, verifique se esta correta e tente novamente."
+      - "&aVocê mudou de plano de &f@antigo para &a@novo"
+  StatusUpdate: "&aAlteração feita com sucesso!"
+  BroadCast:
+    Title: #Limite de 2 linhas, pois a 1 é o TITLE, e o 2 é o SUBTITLE
+      - "@prefix"
+      - "@prefixColor@player &fativou o VIP"
+    Message:
+      ActionBar:
+        - "Parabéns! Seu VIP foi ativado."
+      Actived:
+        - ""
+        - "&aYay! O seu VIP foi ativado com sucesso."
+        - ""
+      UpgradeTime:
+        - ""
+        - "&aO tempo de seu VIP foi prolongado, pois você"
+        - "&aativou um VIP ativo de seu perfil."
+        - ""
+        - "&aAgora você "
+        - ""
+
+Menus:
+  Keys:
+    Title: "Chaves"
+    Status:
+      - "&aEm andamento"
+      - "&eEm suspensão"
+    Item:
+      Material: REDSTONE_WIRE
+      Data: 0
+      Name: "&a@vip"
+      Lore:
+        - "&7Ativo em&f @data"
+        - "&7às &f@hora"
+        - ""
+        - "&7Status: @status"
+        - ""
+  Historic:
+    Title: "Histórico"
+    Status:
+      - "&aAtivo"
+      - "&cExpirado"
+    Item:
+      Material: MAP
+      Data: 0
+      Name: "@vip"
+      Lore:
+        - "&7Ativado em &f@data"
+        - "&7às &f@hora"
+        - ""
+        - "&7Estado: @status"
+        - ""
+        - "&fExpira em &7@tempo"
+        - ""
+  Configuration:
+    Title: "Configuração"
+    Items:
+      Warn:
+        Status:
+          - "&aAtivado."
+          - "&cDesativado."
+        Names:
+          - "&eAtivar avisos de expiração"
+          - "&eDesativar avisos de expiração"
+        Lore:
+          - "&7Receba avisos de quanto tempo"
+          - "&7seu plano resta, quando entrar"
+          - ""
+          - "&eClique aqui para alterar"
+      Broadcast:
+        Status:
+          - "&aAtivado."
+          - "&cDesativado."
+        Names:
+          - "&aAnunciar VIP (Ativado)"
+          - "&cAnunciar VIP (Desativado)"
+        Lore:
+          - "&7Quando for ativar seu VIP"
+          - "&7tenha a escolha de querer"
+          - "&7ser anunciado."
+          - ""
+          - "&fStatus: @status"
+          - ""
+          - "&eClique para alterar."
+      Firework:
+        Status:
+          - "&aAtivado."
+          - "&cDesativado."
+        Names:
+          - "&aLançar foguetes (Ativado)"
+          - "&cLançar foguetes (Desativado)"
+        Lore:
+          - "&7Quando for ativar seu VIP"
+          - "&7tenha a escolha de querer"
+          - "&7ter foguete lançado quando ativar.."
+          - ""
+          - "&fStatus: @status"
+          - ""
+          - "&eClique para alterar."
+  Profile:
+    Title: "Perfil"
+    Size: 27
+    Items:
+      ProfileItem:
+        Name: "&eSuas informações"
+        Slot: 11
+        Lore:
+          - ""
+          - "&fVIP atual:&a @vip"
+          - ""
+          - "&fExpira em &7@tempo"
+          - ""
+          - "&eAcabou por aqui..."
+      Config:
+        Name: "&6Configurações"
+        Material: COMPARATOR
+        Data: 0
+        Slot: 10
+        Lore:
+          - "&7Tenha acesso a configuração de"
+          - "&7seu perfil, sobre seu vip."
+          - ""
+          - "&eClique aqui para abrir."
+      Historic:
+        Name: "&bHistórico"
+        Material: BOOK
+        Data: 0
+        Slot: 14
+        Lore:
+          - "&7Tenha acesso ao seu histórico"
+          - "&7de planos&f VIP&7 adquiridos."
+          - ""
+          - "&eClique aqui para acessar."
+      Keys:
+        Name: "&aChaves ativado"
+        Material: REDSTONE_WIRE
+        Data: 0
+        Slot: 16
+        Lore:
+          - "&7Tenha acesso a suas chaves"
+          - "&7ativadas neste perfil. Podendo"
+          - "&7alternar de um&f plano&7 a outro."
+          - ""
+          - "&eClique aqui para acessar."

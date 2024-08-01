@@ -1,0 +1,17 @@
+# PT-BR: Templates padrões
+# ENGLISH: Default templates
+
+TEMPLATES:
+  VIP:
+    Name: "VIP"
+    Prefix: "&a[VIP]"
+    Default-Time: 30d
+    Commands:
+      - "give @player diamond 64"
+  VIPPLUS:
+    Name: "VIP+"
+    Prefix: "&a[VIP&6+&a]"
+    Default-Time: 30d
+    Commands:
+      - "give @player diamond 64"
+      - "give @player diamond 64"
